@@ -12,9 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
+@CrossOrigin(origins = "http://localhost:8080")
 public class ProducerController {
     
     // Parsing object class. Used to retrieve data from API.
@@ -38,6 +41,7 @@ public class ProducerController {
 
     // Retrieve states from API 
     @GetMapping("/states")
+    @ResponseBody
     public void getStates()
     {
         ResponseEntity<Object> response = parsingObject.parseObject(endpointAPI);
@@ -49,4 +53,17 @@ public class ProducerController {
         this.states = state_info.getStateObj();
     }
 
+    // Retrieve states from API 
+    @GetMapping("/getstates")
+    @ResponseBody
+    public List<State> getStatesList()
+    {
+        ResponseEntity<Object> response = parsingObject.parseObject(endpointAPI);
+        Object objects = response.getBody();
+
+        StateInfo state_info = mapper.convertValue(objects, StateInfo.class);
+        state_info.Fill_States();        
+
+        return state_info.getStateObj();
+    }
 }
