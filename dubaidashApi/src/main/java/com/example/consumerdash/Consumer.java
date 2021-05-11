@@ -1,5 +1,7 @@
 package com.example.consumerdash;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -17,9 +19,10 @@ public class Consumer {
     @KafkaListener(topics = "states", groupId = "group_id")
     public void consume(String message) throws IOException {
         logger.info(String.format("#### -> Consumed message -> %s", message));
-        StateInfo estados = new ObjectMapper().convertValue(message,StateInfo.class);
+        Gson ola = new Gson();
+        StateInfo estados = ola.fromJson(message,StateInfo.class);
         estados.Fill_States();
         this.states = estados.getStateObj();
-        logger.info(states.toString());
+        logger.info(estados.getStateObj().get(0).origin_country);
     }
 }
