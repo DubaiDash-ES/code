@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 public class Consumer {
     private final Logger logger = LoggerFactory.getLogger(Consumer.class);
-    List<State> states;
+    static List<State> states;
 
 
     @KafkaListener(topics = "states", groupId = "group_id")
