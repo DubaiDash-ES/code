@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.project.dubaidash.models.ParsingObject;
+import com.project.dubaidash.models.Producer;
 import com.project.dubaidash.models.State;
 import com.project.dubaidash.models.StateInfo;
 
@@ -20,6 +21,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @CrossOrigin(origins = "http://localhost:8080")
 public class ProducerController {
     
+    @Autowired
+    private Producer prod;
     // Parsing object class. Used to retrieve data from API.
     @Autowired
     ParsingObject parsingObject;    
@@ -36,6 +39,7 @@ public class ProducerController {
     @GetMapping("/")
     public String states(Model model) throws IOException
     {
+        prod.sendMessage("Index sending...");
         return "index";
     }
 
@@ -56,14 +60,9 @@ public class ProducerController {
     // Retrieve states from API 
     @GetMapping("/getstates")
     @ResponseBody
-    public List<State> getStatesList()
+    public void getStatesList()
     {
         ResponseEntity<Object> response = parsingObject.parseObject(endpointAPI);
-        Object objects = response.getBody();
-
-        StateInfo state_info = mapper.convertValue(objects, StateInfo.class);
-        state_info.Fill_States();        
-
-        return state_info.getStateObj();
+        prod.sendMessage(response.getBody().toString());
     }
 }
