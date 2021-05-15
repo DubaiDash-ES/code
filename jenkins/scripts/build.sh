@@ -1,7 +1,7 @@
 #!/bin/bash
 MODULES=(
 	dubaidash
-	dubaidashAPI
+	dubaidashApi
 )
 
 for i in ${!MODULES[@]}; do
