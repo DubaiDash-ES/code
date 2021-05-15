@@ -1,3 +1,4 @@
+#!/bin/bash
 MODULES=(
 	dubaidash
 	dubaidashAPI
