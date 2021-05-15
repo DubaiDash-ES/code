@@ -6,7 +6,7 @@ MODULES=(
 
 for i in ${!MODULES[@]}; do
 
-	cd ${!MODULES[$i]}
+	cd ${MODULES[$i]}
 	rm -rf target
 	ls
 	mvn test
