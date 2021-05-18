@@ -8,6 +8,6 @@ for i in ${!MODULES[@]}; do
 	cd ${MODULES[$i]}
 
 	rm -rf target
-	mvn -X -Dmaven.test.skip=true clean package
+	mvn -X -Dmaven.test.skip=true --settings ../settings.xml deploy
 	cd ..
 done
