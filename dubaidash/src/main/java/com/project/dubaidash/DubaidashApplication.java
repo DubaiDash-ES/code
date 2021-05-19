@@ -13,7 +13,7 @@ public class DubaidashApplication {
 	@Bean
 	public RestTemplate getRestTemplate()
 	{
-		return new RestTemplate();
+		return new RestTemasdplate();
 	} 
 	public static void main(String[] args) {
 		SpringApplication.run(DubaidashApplication.class, args);
