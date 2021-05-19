@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e
+
 MODULES=(
 	dubaidash
 	dubaidashApi
@@ -7,7 +9,7 @@ MODULES=(
 for i in ${!MODULES[@]}; do
 	cd ${MODULES[$i]}
 
-	rm -rf target
+	rmasd -rf target
 	mvn -X -Dmaven.test.skip=true --settings ../settings.xml deploy
 	cd ..
 done
