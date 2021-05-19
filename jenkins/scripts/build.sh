@@ -1,6 +1,4 @@
 #!/bin/bash
-set -e
-
 MODULES=(
 	dubaidash
 	dubaidashApi
