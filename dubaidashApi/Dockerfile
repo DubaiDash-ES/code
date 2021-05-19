@@ -3,9 +3,9 @@ WORKDIR application
 RUN apt-get update
 RUN apt-get -y install curl
 RUN mkdir /usr/app
-RUN curl -u dev:dev_ES2021 -o .jar "http://192.168.160.49:8082/artifactory/maven_es2021/pt/ua/deti/es/esp20/consumerdash/0.0.1-SNAPSHOT/consumerdash-0.0.1-20210518.164316-1.jar" -o /usr/app/dubaidash.jar
+RUN curl -u dev:dev_ES2021 -o .jar "http://192.168.160.49:8082/artifactory/maven_es2021/pt/ua/deti/es/esp20/consumerdash/0.0.1-SNAPSHOT/consumerdash-0.0.1-20210518.164316-1.jar" -o /usr/app/dubaidashapi.jar
 
-RUN java -Djarmode=layertools -jar /usr/app/dubaidash.jar extract
+RUN java -Djarmode=layertools -jar /usr/app/dubaidashapi.jar extract
 
 FROM openjdk:11-jre-slim
 WORKDIR application
