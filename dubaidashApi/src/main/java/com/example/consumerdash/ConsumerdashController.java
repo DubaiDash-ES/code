@@ -15,7 +15,7 @@ public class ConsumerdashController {
         return "Hi! Welcome to DubaiDash ✈️ RestApi we are still building it  \uD83C\uDFD7️ ";
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "http://192.168.160.87:3000")
     @RequestMapping("/data")
     public List<State> data(){
         return Consumer.states;
