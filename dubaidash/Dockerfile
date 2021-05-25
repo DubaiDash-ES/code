@@ -1,4 +1,5 @@
 FROM openjdk:11-jre-slim as builder
+WORKDIR application
 COPY target/dubaidash-0.0.1-SNAPSHOT.jar /usr/app/dubaidash.jar
 
 RUN java -Djarmode=layertools -jar /usr/app/dubaidash.jar extract
