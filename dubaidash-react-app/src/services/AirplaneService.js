@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const AIRPLANES_DUBAI_API_URL = 'http://192.168.160.87:8081/data'
+const AIRPLANES_DUBAI_API_URL = 'http://192.168.160.87:20004/data'
 
 class AirplaneService {
 
