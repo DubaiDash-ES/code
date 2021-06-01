@@ -77,7 +77,7 @@ pipeline {
                         sh 'ssh -o StrictHostKeyChecking=no esp20@192.168.160.87 docker rm esp20_react'
                         sh 'ssh -o StrictHostKeyChecking=no esp20@192.168.160.87 docker rmi  192.168.160.48:5000/esp20_react'
                     }
-                    sh 'ssh -o StrictHostKeyChecking=no esp20@192.168.160.87 docker-compose up -d esp20_dubaidash esp20_dubaidashapi esp20_react'
+                    //sh 'ssh -o StrictHostKeyChecking=no esp20@192.168.160.87 docker-compose up -d esp20_dubaidash esp20_dubaidashapi esp20_react'
                 }
             }
         }
