@@ -12,6 +12,15 @@
   justify-content: center;
 }
 
+.marker {
+  background-image: url('plane-icon.png');
+  background-size: cover;
+  width: 35px;
+  height: 35px;
+  border-radius: 35%;
+  cursor: pointer;
+}
+
 .App {
   text-align: center;
 }
