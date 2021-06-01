@@ -1,6 +1,6 @@
 import './App.css';
 import TableDubaiAirplanes from './components/TableDubaiAirplanes';
-import MapBox from './components/MapBox';
+import MapAirplanes from './components/MapAirplanes';
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
         <div className="col-2"/>
         <div className="col-8">
 
-          <MapBox />
+          <MapAirplanes />
         </div>
         <div className="col-2"/>
       </div>
