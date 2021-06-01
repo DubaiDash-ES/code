@@ -18,12 +18,12 @@
     </properties>
     <distributionManagement>
         <repository>
-            <id>central</id>
+            <id>centralmaracuja</id>
             <name>e7315e271819-releases</name>
             <url>http://192.168.160.49:8081/artifactory/maven_es2021</url>
         </repository>
         <snapshotRepository>
-            <id>snapshots</id>
+            <id>snapshotslimao</id>
             <name>e7315e271819-snapshots</name>
             <url>http://192.168.160.49:8081/artifactory/maven_es2021</url>
         </snapshotRepository>

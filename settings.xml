@@ -5,12 +5,12 @@
     <server>
       <username>dev</username>
       <password>dev_ES2021</password>
-      <id>central</id>
+      <id>centralmaracuja</id>
     </server>
     <server>
       <username>dev</username>
       <password>dev_ES2021</password>
-      <id>snapshots</id>
+      <id>snapshotslimao</id>
     </server>
   </servers>
   <profiles>
@@ -20,13 +20,13 @@
           <snapshots>
             <enabled>false</enabled>
           </snapshots>
-          <id>central</id>
+          <id>centralmaracuja</id>
           <name>es2021</name>
           <url>http://192.168.160.49:8081/artifactory/es2021</url>
         </repository>
         <repository>
           <snapshots />
-          <id>snapshots</id>
+          <id>snapshotslimao</id>
           <name>es2021</name>
           <url>http://192.168.160.49:8081/artifactory/es2021</url>
         </repository>
@@ -36,13 +36,13 @@
           <snapshots>
             <enabled>false</enabled>
           </snapshots>
-          <id>central</id>
+          <id>centralmaracuja</id>
           <name>es2021</name>
           <url>http://192.168.160.49:8081/artifactory/es2021</url>
         </pluginRepository>
         <pluginRepository>
           <snapshots />
-          <id>snapshots</id>
+          <id>snapshotslimao</id>
           <name>es2021</name>
           <url>http://192.168.160.49:8081/artifactory/es2021</url>
         </pluginRepository>
