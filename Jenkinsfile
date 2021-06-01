@@ -43,18 +43,24 @@ pipeline {
                         dubaidash_image.push("$BUILD_NUMBER")
                         dubaidash_image.push('latest')
                     }
+		    sh 'docker rm esp20_dubaidash'
+	            sh 'docker rmi esp20_dubaidash'
                     
                     consumerdashapi_image = docker.build("esp20_dubaidashapi","./dubaidashApi")
                     docker.withRegistry(registryUri) {
                         consumerdashapi_image.push("$BUILD_NUMBER")
                         consumerdashapi_image.push('latest')
                     }
+		    sh 'docker rm esp20_dubaidashapi'
+		    sh 'docker rmi esp20_dubaidashapi'
                     
                     react_image = docker.build("esp20_react","./dubaidash-react-app")
                     docker.withRegistry(registryUri) {
                         react_image.push("$BUILD_NUMBER")
                         react_image.push('latest')
                     }
+		    sh 'docker rm esp20_react'
+		    sh 'docker rmi esp20_react'
                 }
             }
         }
