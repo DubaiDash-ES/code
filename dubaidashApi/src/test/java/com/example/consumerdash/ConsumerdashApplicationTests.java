@@ -16,6 +16,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 @SpringBootTest
 @AutoConfigureMockMvc
+@ActiveProfiles("test")
 class ConsumerdashApplicationTests {
 
     @Autowired
@@ -60,6 +61,5 @@ class ConsumerdashApplicationTests {
     //     System.out.println("Check most popular origin country");
     //     this.mockMvc.perform(get("/mostpopularorigincountry")).andDo(print()).andExpect(status().isOk());
     // }
-
 
 }
