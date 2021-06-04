@@ -36,7 +36,7 @@ public class ProducerController {
     private ObjectMapper mapper = new ObjectMapper();  
 
     // API Endpoint URL - All states flying inside a square on Dubai
-    String endpointAPI = "https://opensky-network.org/api/states/all?lamin=24.724665&lomin=54.874123&lamax=25.361084&lomax=55.586776";
+    public String endpointAPI = "https://opensky-network.org/api/states/all?lamin=24.724665&lomin=54.874123&lamax=25.361084&lomax=55.586776";
     
     List<State> states;
     String uelele = "";
@@ -70,7 +70,9 @@ public class ProducerController {
     @Scheduled(fixedRate = 5000)
     public void getStatesList()
     {
+        System.out.println("$$$$$$$$$$$$$$$$$$$ GETTING THE STATES $$$$$$$$$$$$$$$$$");
         ResponseEntity<Object> response = parsingObject.parseObject(endpointAPI);
+        System.out.println(response.getStatusCode());
         Gson gson = new Gson();
         String json = gson.toJson(response.getBody());
         prod.sendMessage(json);
