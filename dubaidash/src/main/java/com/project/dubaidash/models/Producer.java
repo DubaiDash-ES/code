@@ -15,8 +15,7 @@ public class Producer {
     private KafkaTemplate<String, String> kafkaTemplate;
 
     public void sendMessage(String message) {
-        //logger.info(String.format("#### -> Producing message -> %s", message));
-        logger.info(String.format("#### -> Producing message"));
+        logger.info(String.format("#### -> Producing message -> %s", message));
         this.kafkaTemplate.send(TOPIC, message);
     }
 }
