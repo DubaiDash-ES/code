@@ -28,7 +28,8 @@ public class Consumer {
 
     @KafkaListener(topics = "states", groupId = "group_id")
     public void consume(String message) throws IOException {
-        logger.info(String.format("#### -> Consumed message -> %s", message));
+        //logger.info(String.format("#### -> Consumed message -> %s", message));
+        logger.info(String.format("#### -> Consumed message "));
         Gson ola = new Gson();
         StateInfo estados = ola.fromJson(message,StateInfo.class);
         estados.Fill_States();
@@ -56,14 +57,16 @@ public class Consumer {
 
     @KafkaListener(topics = "arrivals", groupId = "group_id")
     public void consume2(String message) throws IOException {
-        logger.info(String.format("#### -> Consumed arrival message -> %s", message));
+        //logger.info(String.format("#### -> Consumed arrival message -> %s", message));
+        logger.info(String.format("#### -> Consumed arrival message"));
         Gson hello = new Gson();
         this.arrivals = hello.fromJson(message,new TypeToken<List<State>>(){}.getType());
     }
 
     @KafkaListener(topics = "departures", groupId = "group_id")
     public void consume3(String message) throws IOException {
-        logger.info(String.format("#### -> Consumed departure message -> %s", message));
+        //logger.info(String.format("#### -> Consumed departure message -> %s", message));
+        logger.info(String.format("#### -> Consumed departure message"));
         Gson hello = new Gson();
         this.departures = hello.fromJson(message,new TypeToken<List<State>>(){}.getType());
     }
