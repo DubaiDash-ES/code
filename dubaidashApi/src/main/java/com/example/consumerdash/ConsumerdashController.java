@@ -12,24 +12,28 @@ import java.util.List;
 @RestController
 public class ConsumerdashController {
 
+    private final Logger logger = LoggerFactory.getLogger(ConsumerdashController.class);
+
     @Autowired
     private StateRepository repository;
 
     @RequestMapping("/")
     public String index() {
+        logger.info(String.format("#### -> GET request /"));
         return "Hi! Welcome to DubaiDash ✈️ RestApi we are still building it  \uD83C\uDFD7️ ";
     }
 
     @CrossOrigin(origins = "http://192.168.160.87:20005")
     @RequestMapping("/data")
     public List<State> data(){
+        logger.info(String.format("#### -> GET request /data"));
         return Consumer.states;
     }
 
     @CrossOrigin(origins = "http://192.168.160.87:20005")
     @RequestMapping("/alldbdata")
     public List<State> alldbdata(){
-
+        logger.info(String.format("#### -> GET request /alldbdata"));
         return repository.findAll();
     }
 
@@ -52,7 +56,7 @@ public class ConsumerdashController {
                 }
             }
         }
-
+        logger.info(String.format("#### -> GET request /mostpopularorigincountry"));
         return country;
 
     }
@@ -60,12 +64,14 @@ public class ConsumerdashController {
     @CrossOrigin(origins = "http://192.168.160.87:20005")
     @RequestMapping("/arrival")
     public List<State> arrival(){
+        logger.info(String.format("#### -> GET request /arrival"));
         return Consumer.arrivals;
     }
 
     @CrossOrigin(origins = "http://192.168.160.87:20005")
     @RequestMapping("/departure")
     public List<State> departure(){
+        logger.info(String.format("#### -> GET request /departure"));
         return Consumer.departures;
     }
 }

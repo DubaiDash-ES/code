@@ -14,7 +14,7 @@ public class ConsumerdashApplication {
     public static void main(String[] args) {
         SpringApplication.run(ConsumerdashApplication.class, args);
     }
-
+    /*
     @Bean
     public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
         return args -> {
@@ -28,5 +28,5 @@ public class ConsumerdashApplication {
             }
 
         };
-    }
+    }*/
 }
