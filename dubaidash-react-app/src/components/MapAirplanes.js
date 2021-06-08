@@ -26,30 +26,57 @@ class MapAirplanes extends React.Component {
         var currentMarkers = [];
 
         map.on('load', function() {
-                window.setInterval(function () {
+            AirplaneService.get_dubai_airplanes().then((response) => {
+                if (currentMarkers !== null) {
+                    for (var i = currentMarkers.length - 1; i >= 0; i--) {
+                        currentMarkers[i].remove();
+                    }
+                }
 
-                    AirplaneService.get_dubai_airplanes().then((response) => {
-                        console.log("Markers updated!");
-                        if (currentMarkers !== null) {
-                            for (var i = currentMarkers.length - 1; i >= 0; i--) {
-                                currentMarkers[i].remove();
-                            }
-                        }
+                response.data.forEach((plane) => {
+                    // create a HTML element for each feature
+                    var el = document.createElement('div');
+                    el.className = 'marker';
 
-                        response.data.forEach((plane) => {
-                            // create a HTML element for each feature
-                            var el = document.createElement('div');
-                            el.className = 'marker';
-
-                            var marker = new mapboxgl.Marker(el)
-                                                .setLngLat([plane.longitude, plane.latitude])
-                                                .addTo(map);
-                            currentMarkers.push(marker);
-                        });
-                    });
-                }, 2000);
+                    var marker = new mapboxgl.Marker(el)
+                                            .setLngLat([plane.longitude, plane.latitude])
+                                            .setPopup(new mapboxgl.Popup( {offset: 30} )
+                                            .setHTML('<h4> Plane Info </h4> icao24: ' + plane.icao24 + 
+                                                     '<br> País de origem: ' + plane.origin_country +
+                                                     '<br> Velocidade: ' + plane.velocity + ' (m/s)'
+                                                     ))
+                                            .addTo(map);
+                    currentMarkers.push(marker);
+                });
             });
 
+            window.setInterval(function () {
+
+                AirplaneService.get_dubai_airplanes().then((response) => {
+                    if (currentMarkers !== null) {
+                        for (var i = currentMarkers.length - 1; i >= 0; i--) {
+                            currentMarkers[i].remove();
+                        }
+                    }
+
+                    response.data.forEach((plane) => {
+                        // create a HTML element for each feature
+                        var el = document.createElement('div');
+                        el.className = 'marker';
+
+                        var marker = new mapboxgl.Marker(el)
+                                                .setLngLat([plane.longitude, plane.latitude])
+                                                .setPopup(new mapboxgl.Popup( {offset: 30} )
+                                                .setHTML('<h4> Plane Info </h4> icao24: ' + plane.icao24 + 
+                                                     '<br> País de origem: ' + plane.origin_country +
+                                                     '<br> Velocidade: ' + plane.velocity + ' (m/s)'
+                                                     ))
+                                                .addTo(map);
+                        currentMarkers.push(marker);
+                    });
+                });
+            }, 15000);
+        });
     }
 
     render() {

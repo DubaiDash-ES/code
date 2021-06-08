@@ -17,10 +17,17 @@ class TableDubaiAirplanes extends React.Component {
         });
     }
 
+    handleClick = () => {
+        AirplaneService.get_dubai_airplanes().then((response) => {
+            this.setState({ airplanes: response.data })
+        });
+    };
+
     render() {
         return (
 
             <div className="table-container">
+                <button type="button" className="btn btn-info" onClick={this.handleClick}>Reload Table</button>
                 <br></br>
                 <h1 className="center"> Airplanes in Dubai </h1>
                 <br></br>

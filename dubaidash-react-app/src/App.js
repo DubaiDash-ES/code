@@ -1,6 +1,8 @@
 import './App.css';
 import TableDubaiAirplanes from './components/TableDubaiAirplanes';
 import MapAirplanes from './components/MapAirplanes';
+import NavBar from './components/NavBar';
+import Hero from './components/Hero';
 
 function App() {
   return (
