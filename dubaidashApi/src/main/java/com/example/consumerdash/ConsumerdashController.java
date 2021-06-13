@@ -74,4 +74,5 @@ public class ConsumerdashController {
         logger.info(String.format("#### -> GET request /departure"));
         return Consumer.departures;
     }
+    
 }
