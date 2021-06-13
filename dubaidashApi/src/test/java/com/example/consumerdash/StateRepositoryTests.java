@@ -45,6 +45,7 @@ class StateRepositoryTests {
     @Test
     public void whenFindAll() {
         State firstState = new State();
+        repositoryState.deleteAll();
         firstState.setIcao24("111222");
         entityManager.persist(firstState);
         entityManager.flush();
