@@ -15,15 +15,15 @@ import java.util.List;
 
 @Service
 public class Consumer {
-    private static final Logger logger = LoggerFactory.getLogger(Consumer.class);
+    private final Logger logger = LoggerFactory.getLogger(Consumer.class);
     static List<State> states;
     static List<State> arrivals;
     static List<State> departures;
 
     @Autowired
-    private static StateRepository repository;
+    private StateRepository repository;
     @Autowired
-    private static Producer prod;
+    private Producer prod;
 
 
     @KafkaListener(topics = "states", groupId = "group_id")
@@ -70,14 +70,12 @@ public class Consumer {
 
     public static void fillStatesTest(String message)
     {
-        logger.info(String.format("#### -> Consumed test message -> %s", message));
         Gson ola = new Gson();
         StateInfo estados = ola.fromJson(message,StateInfo.class);
         estados.Fill_States();
         states = estados.getStateObj();
         List<State> chegadas = new ArrayList<>();
         List<State> partidas = new ArrayList<>();
-        logger.info(estados.getStateObj().get(0).origin_country);
         for(State state : estados.getStateObj())
         {
             if(state.on_ground) {
