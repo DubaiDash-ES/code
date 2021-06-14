@@ -20,12 +20,12 @@ pipeline {
                 sh "chmod +x -R ${env.WORKSPACE}"
             }
         }
-        
+        /*
         stage('Testing'){
             steps{
                 sh './jenkins/scripts/tests.sh'
             }
-        }
+        }*/
         
         stage('Build') {
             
@@ -80,6 +80,8 @@ pipeline {
                         sh 'ssh -o StrictHostKeyChecking=no esp20@192.168.160.87 docker rm esp20_react'
                         sh 'ssh -o StrictHostKeyChecking=no esp20@192.168.160.87 docker rmi  192.168.160.48:5000/esp20_react'
                     }
+		    sh 'scp -r ./logstash esp20@192.168.160.87:./logstash ./logstash'
+		    sh 'scp esp20@192.168.160.87:./docker-compose.yml ./'
                     sh 'ssh -o StrictHostKeyChecking=no esp20@192.168.160.87 docker-compose up -d esp20_dubaidash esp20_dubaidashapi esp20_react'
                 }
             }

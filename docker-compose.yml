@@ -43,7 +43,6 @@ services:
                 expose:
                         - "20003" 
                 depends_on: 
-                        - esp20_kafka
                         - esp20_logstash
                 networks:
                         dubaidash_subnet:
@@ -57,13 +56,11 @@ services:
                 expose:
                         - "20004"
                 environment:
-                        - SPRING_DATASOURCE_URL=jdbc:mysql://192.168.160.87:20006/dubaidash?user=pilot&password=plane
-                        - SPRING_DATASOURCE_USERNAME=pilot
-                        - SPRING_DATASOURCE_PASSWORD=plane
+                        - SPRING_DATASOURCE_URL=jdbc:mysql://192.168.160.18:3306/esp20_dubaidash?user=esp20&password=dubaidash
+                        - SPRING_DATASOURCE_USERNAME=esp20
+                        - SPRING_DATASOURCE_PASSWORD=dubaidash
                         - SPRING_JPA_HIBERNATE_DDL_AUTO=update
                 depends_on: 
-                        - esp20_kafka
-                        - esp20_db
                         - esp20_logstash
                 links:
                         - esp20_logstash:esp20_logstash
@@ -118,6 +115,8 @@ services:
                 ports:                                                                                
                         - "5000:5000"
                         - "20007:20007/tcp"
+                expose:
+                        - "20007"
                 networks:
                         dubaidash_subnet:
                                 ipv4_address: 10.10.1.8
